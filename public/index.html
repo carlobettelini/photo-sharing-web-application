@@ -1,0 +1,51 @@
+<html>
+
+    <head>
+        <title>Web Atelier Photo Album</title>
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+
+    <body onload="init()">
+        <h1>Web Atelier Photo Gallery</h1>
+        <div id="main-content">
+            <div id="socket"></div>
+            <section id="slideshow"></section>
+            <section id="search"></section>
+            <section id="gallery"></section>
+            <section id="upload"></section>
+        </div>
+        <div id="sidebar">
+            <h2>Contacts:</h2>
+            <div id="sidebar_content">
+                <div id="infos">
+                    <div class="info">
+                        <img src="http://localhost:5000/logos/gmail.png" class="images-info">
+                        <h5>bettec@usi.ch</h5>
+                    </div>
+                    <div class="info">
+                        <img src="http://localhost:5000/logos/phone.png" class="images-info">
+                        <h5>0795601458</h5>
+                    </div>
+                    <div class="info">
+                        <a href="https://www.youtube.com/channel/UCy2EBfzoASrMHphFxhxh_ng?view_as=subscriber"
+                            target="_blank">
+                            <img src="http://localhost:5000/logos/youtube.png" class="images-info">
+                        </a>
+                        <h5>Youtube</h5>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <footer>
+                    <p>© Carlo Bettelini, last page update 10 december 2020</p>
+                </footer>
+            </div>
+        </div>
+
+        <script src="js/ejs.min.js"></script>
+        <script src="js/views.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

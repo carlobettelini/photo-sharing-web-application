@@ -1,0 +1,33 @@
+<%#
+  #
+  # Web Atelier 2020  Exercise 7 - Single-Page Web Applications with Fetch and Client-side Views
+  #
+  # Student: Carlo Bettelini
+  #
+  # slideshow.ejs view
+  #
+  #%>
+
+  <% let path = "http://localhost:5000/"; %>
+  <h2><%= title %></h2>
+  <% if (message != "") { %>
+    <h3><%= message %></h3>
+  <% } %>
+  <figure id="<%= current_image._id %>">
+    <figcaption>
+        <h4><%= current_image.title %></h4>
+    </figcaption>
+    <div id="main-image-container-slideshow">
+        <img id="main-image-slideshow" src="<%= path %>images/<%= current_image.filename %>" style="<%= current_image.filter %>">
+    </div>
+    <div id="image_gallery_buttons">
+      <form class="start" action="/pictures/slideshow" method="GET">
+        <button class="image_gallery_button" type="submit">Start</button>
+        <input type="hidden" name="filter" value="<%= current_image._id %>">
+      </form>
+      <form class="stop" action="/pictures/slideshow" method="GET">
+        <button class="image_gallery_button" type="submit">Stop</button>
+        <input type="hidden" name="filter" value="<%= current_image._id %>">
+      </form>
+    </div>
+  </figure>

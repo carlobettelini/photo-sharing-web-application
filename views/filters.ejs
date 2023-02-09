@@ -1,0 +1,45 @@
+<% let path = "http://localhost:5000/"; %>  
+<% let id = 0 %>
+
+<div class="edit-area">
+    <div id="filtered-image">
+        <h3>Original:</h3>
+        <div class="filters">
+            <div id="<%= id %>" class="filter">
+                <img src="<%= path %>thumbnails/<%= current_image.filename %>" />
+            </div>
+        </div>
+        <% id++ %>
+        
+        <% let i, j, k, l; %>
+        <% let filter; %>
+        
+        <% for (var value in filters) { %>
+            <h3><%= value.split(" ")[1].split("(")[0] %></h3>
+            <% let part_1 = value.split(',')[0]; %>
+            <% let part_3 = value.split(',')[1]; %>
+            <div class="filters">
+            <% for (i=1, j=0.2, k=10, l=25; i<10; i++, j+=0.2, k+=10, l+=25) { %>
+                <% values = [i, j, k, l]; %>
+                <% filter = part_1 + values[filters[value]] + part_3 %>
+                <div id="<%= id %>" class="filter">
+                    <img src="<%= path %>thumbnails/<%= current_image.filename %>" style="<%= filter %>" />
+                </div>
+                <% id++ %>
+            <% } %>
+            </div>
+        <%} %>
+        <div id="editor_other_choices">
+            <form class="back" method="GET" action="/pictures">
+                <button class="image_edit_button" type="submit">Cancel</button>
+            </form>
+            <form class="save" method="POST" action="/pictures/<%= current_image._id %>?_method=PUT">
+                <button class="image_edit_button" type="submit">Save
+                    <input type="hidden" name="title" value="<%= current_image.title %>" />
+                    <input type="hidden" name="description" value="<%= current_image.description %>" />
+                    <input type="hidden" name="favourite" value="<%= current_image.favourite %>" />
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

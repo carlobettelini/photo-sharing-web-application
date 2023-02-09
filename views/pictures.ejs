@@ -1,0 +1,60 @@
+<%#
+  #
+  # Web Atelier 2020  Exercise 7 - Single-Page Web Applications with Fetch and Client-side Views
+  #
+  # Student: Carlo
+  #
+  # pictures.ejs view
+  #
+  #%>
+
+<% let path = "http://localhost:5000/"; %>
+<% if (search) { %>
+  <h2><%= title %> - <%= search %></h2>
+<% } else { %>
+  <h2><%= title %></h2>
+<% } %>
+<div id="thumbnail-images">
+<h3>Click on an image to modify its informations, click on <b>edit</b> to edit filters.</h3>
+    <% if (list.length == 0) { %>
+        <h3>So empty...</h3>
+    <% } else { %>
+        <% list.forEach( (image) => { %> 
+            <% let extension = image.filename.split(".")[1]; %>
+            <% if (!image.missing_file &&  (extension == "jpg" || extension == "jpeg" || extension == "png")) { %>
+                <figure id="<%= image._id %>" class="gallery_image">
+                    <div id="<%= image._id %>">
+                        <figcaption>
+                          <h4><%= image.title %></h4>
+                        </figcaption>
+                        <img src="<%= path %>thumbnails/<%= image.filename %>" style="<%= image.filter %>">
+                    </div>
+                    <div id="image_gallery_buttons">
+                      <form class="duplicate" method="POST" action="/pictures">
+                        <input class="image_gallery_button" type="submit" value="Duplicate" />
+                        <input type="hidden" name="duplicate" value="true">
+                        <input type="hidden" name="filter" value="<%= image.filter %>">
+                        <input type="hidden" name="filename" value="<%= image.filename %>">
+                        <input type="hidden" name="title" value="<%= image.title %>"> 
+                        <input type="hidden" name="description" value="<%= image.desc %>"> 
+                        <input type="hidden" name="email" value="<%= image.email %>"> 
+                        <input type="hidden" name="quality" value="<%= image.quality %>"> 
+                      </form>
+                      <form class="delete" method="POST" action="/pictures/<%= image._id %>?_method=DELETE">
+                        <input class="image_gallery_button" type="submit" value="Delete" /> 
+                      </form>
+                      <form class="edit" action="/pictures/<%= image._id %>/edit" method="GET">
+                        <button class="image_gallery_button" type="submit">Edit</button>
+                        <input type="hidden" name="filter" value="<%= image.filter %>">
+                      </form>
+                      <a href="/pictures/<%= image._id %>/download"><button class="image_gallery_button" type="submit">Download</button></a><br>
+                      <form class="slideshow" action="/pictures/slideshow" method="GET">
+                        <button class="image_gallery_button-slideshow" type="submit">Show</button>
+                      </form>
+                    </div>
+                    <section class="edit"></section>
+                </figure>
+            <% } %>
+        <% }); %>
+    <% } %>
+</div>
