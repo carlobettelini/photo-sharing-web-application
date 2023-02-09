@@ -516,7 +516,7 @@ class SocketEvents extends Selection {
 
         socket.on("connect", () => {
             console.log("Browser connected!");
-            this.startSocket({ text: `<img src="http://localhost:5000/logos/socket.png" class="images-info">`, area: "socket" });
+            this.startSocket({ text: `<img src="http://localhost:4000/logos/socket.png" class="images-info">`, area: "socket" });
         });
 
         socket.on("disconnect", () => {

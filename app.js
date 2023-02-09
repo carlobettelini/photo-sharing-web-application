@@ -1,15 +1,3 @@
-/**
- * Web Atelier 2020  Exercise 7 - Single-Page Web Applications with Fetch and Client-side Views
- *
- * Student: Carlo Bettelini
- * Main Server Application
- *
- * version 852 Fri Oct 30 2020 12:30:55 GMT+0100 (Central European Standard Time)
- *
- */
-
-
-
 // REQUIRE FRAMEWORK AND MIDDLEWARE DEPENDENCIES------//
 const express = require('express'); //
 const path = require('path'); //
@@ -83,7 +71,7 @@ app.use(function(err, req, res, next) { //
 
 
 // START SERVER-------------------------------------------------------------------//
-const port = 5000; //
+const port = 4000; //
 app.set('port', process.env.PORT || port); //
 //
 const server = app.listen(app.get('port'), function() { //

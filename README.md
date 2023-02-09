@@ -1,9 +1,9 @@
-## Web Atelier Exercise 8 - Real-time Web Applications with Socket.io
+## Before starting
 
-Student: __Write your name here__
-
-Optional Features:
-
-__List the optional features here__
-
-
+```
+npm install dependencies
+```
+# To start the server
+```
+nodemon app.js
+```
