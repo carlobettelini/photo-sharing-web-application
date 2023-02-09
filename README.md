@@ -1,9 +1,9 @@
-## Before starting
+# Before starting
 
 ```
 npm install dependencies
 ```
-# To start the server
+## To start the server
 ```
 nodemon app.js
 ```
